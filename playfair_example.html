@@ -1,0 +1,150 @@
+<!--
+Playfair example html
+by John Pollard III
+c. 2003
+-->
+
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <link href="playfair_example.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>The Playfair Cipher</h2>
+
+      <blockquote>
+        <strong>Cipher</strong> (noun): A method of transforming text to hide
+        its meaning - <em>Merriam-Webster</em>.
+      </blockquote>
+
+      <p>
+        The <strong>Playfair Cipher</strong> was a groundbreaking development in
+        cryptography. It was the first to encrypt pairs of letters (called
+        <strong>digraphs</strong>) instead of single characters. Invented in
+        1854 by Charles Wheatstone and championed by his friend Lyon Playfair,
+        it offered a significant step forward in secure communication.
+      </p>
+
+      <h3>How It Works</h3>
+
+      <p>
+        Before any messages are exchanged, the sender and receiver agree on a
+        <strong>keyword</strong>. This keyword is used to construct a
+        <strong>5x5 grid</strong> of letters, starting with the keyword itself
+        eliminating duplicated letters and filling in the rest of the alphabet
+        (I and J share a space).
+      </p>
+
+      <p>
+        To encrypt, the plaintext is split into pairs of letters. If a pair
+        contains the same letter twice or needs an extra character to complete
+        it, an <code>X</code> is inserted. Each digraph is then transformed:
+      </p>
+
+      <ul>
+        <li>
+          If both letters appear in the <strong>same row</strong>, they're
+          replaced with the letters to their <strong>right</strong>.
+        </li>
+        <li>
+          If in the <strong>same column</strong>, they're replaced by the
+          letters <strong>below</strong>.
+        </li>
+        <li>
+          If they form a <strong>rectangle</strong>, each letter is replaced by
+          the one on the <strong>same row</strong> but in the
+          <strong>other column</strong>.
+        </li>
+      </ul>
+
+      <p>
+        (Decryption works the same way in reverse shifting
+        <strong>left</strong> or <strong>up</strong> instead.)
+      </p>
+
+      <p>
+        Simple to learn, yet surprisingly effective, the Playfair Cipher marked
+        a clever leap in 19th-century cryptographic design.
+      </p>
+    </div>
+
+    <hr />
+    <b>Playfair Cipher</b>
+    <p>
+      <span style="font-size: 14; color: #ccc"
+        >Insert a keyword and the message to encode <br />Switch to decode and
+        input the keyword and the encoded message to decode.</span
+      >
+    </p>
+
+    <br />
+    <table>
+      <tr style="padding: 10px">
+        <td>
+          <span class="key">Keyword: </span>
+        </td>
+        <td>
+          <input
+            id="keyInput"
+            type="text"
+            placeholder="Input Key Here..."
+          /><br />
+        </td>
+      </tr>
+      <tr id="messageRow">
+        <td>
+          <span class="key">Message:</span>
+        </td>
+        <td>
+          <input
+            id="messageInput"
+            type="text"
+            placeholder="Message to encode"
+          />
+        </td>
+      </tr>
+      <tr id="encodedRow">
+        <td>
+          <span class="key">Encoded:</span>
+        </td>
+        <td>
+          <input id="encodedInput" type="text" placeholder="Encoded message" />
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <span class="key">Decode:</span>
+        </td>
+        <td>
+          <label class="switch">
+            <input id="check" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="key" id="lbl">Encoded:</span>
+        </td>
+        <td>
+          <span id="results"></span>
+        </td>
+      </tr>
+    </table>
+
+    <br />
+    <hr />
+    <div id="res"></div>
+  </body>
+  <script src="playfair_example.js"></script>
+</html>
