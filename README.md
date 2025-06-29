@@ -7,9 +7,6 @@ Replaces j with i.
 FILES:
 
 playfair_inc.php
-  Has playfair_enc(key,message) and playfair_dec(key,encodedMessage) functions for including.
+  Has playfair_cipher object.  encode($$message, $passkey) and decode($message, $passkey) methods.
 
-example.php-
-  You must provide a key with a message. Works with GET and POST variables.  Otherwise it defaults to an encoded sample.
-  Vars "Key" for the key and "Data" for message.
-
+example files for a simple implementation.
