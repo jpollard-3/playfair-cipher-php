@@ -43,6 +43,8 @@ $("#messageInput").on("keydown", function () {
 });
 
 $("#keyInput").on("keyup", function () {
+	clearTimeout(typingTimer);
+    typingTimer = setTimeout(performAjaxUpdate, doneTypingInterval);
   //let keyVal = $(this).val();
 });
 
@@ -66,7 +68,7 @@ function performAjaxUpdate() {
     $("#lbl").html("Encoded:");
   }
 
-  if ((messageVal !== "" && !decode) || (encodedVal !== "" && decode)) {
+  if ((messageVal !== "" && keyVal !== "" && !decode) || (encodedVal !== "" && keyVal !== "" &&  decode)) {
     $.ajax({
       url: "playfair_example.php",
       method: "POST",
