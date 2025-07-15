@@ -3,6 +3,7 @@
 // by: John Pollard III 
 // c. 2003
 // updated for php8: 2024
+// php7 compatibility fix: 2025
 
 
 class playfair_cipher {
@@ -229,4 +230,15 @@ class playfair_cipher {
 
 }
 
+
+
+//php 7 compatibility since we're using php8's new str_contains() function.
+
+if (!function_exists('str_contains')) {
+
+    function str_contains($haystack, $needle)
+    {
+        return (strpos($haystack, $needle) !== false);
+    }
+}
 ?>
