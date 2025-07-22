@@ -1,4 +1,4 @@
-Playfair cipher by John Pollard III circa 2003
+# Playfair cipher by John Pollard III circa 2003
 
 Simple playfiar cipher written in php.  This was initially written as a project to help a friend learn to program.
 Replaces j with i. 
